@@ -8,7 +8,7 @@ import retrofit2.http.Url
 object ApiClient {
     var client=OkHttpClient.Builder().build()
     var retrofit= Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl("http://jsonplaceholder.typicode.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

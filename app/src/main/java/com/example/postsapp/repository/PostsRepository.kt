@@ -13,7 +13,7 @@ suspend fun getPosts(): Response<List<Post>> = withContext(Dispatchers.IO){
         val apiInterface=ApiClient.buildServices(ApiInterface::class.java)
             val response =apiInterface.getPosts()
         return@withContext  response
-            .
+
     }
 
 

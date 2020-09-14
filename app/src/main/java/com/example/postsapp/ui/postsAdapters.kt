@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.postsapp.R
 import com.example.postsapp.models.Post
 import kotlinx.android.synthetic.main.row_item_post.view.*
 
@@ -14,7 +15,7 @@ var posts: List<Post>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostsViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.row_item_posts, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.row_item_post, parent, false)
     )
 
     override fun getItemCount() = posts.size
@@ -23,7 +24,7 @@ var posts: List<Post>
         var post = posts[position]
 
         holder.itemView.userId.text = post.userId.toString()
-        holder.itemView.id.text = post.id.toString()
+        holder.itemView.Ids.text  = post.id.toString()
         holder.itemView.title.text = post.title
         holder.itemView.body.text = post.body
     }
