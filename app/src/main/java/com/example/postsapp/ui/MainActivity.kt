@@ -24,7 +24,14 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(this ,postsViewModelFactory).get(PostsViewModel::class.java)
         postsViewModel.getPosts()
         postsViewModel.postsLiveData.observe(this, Observer { postsList->
-            Toast.makeText(baseContext,"${postsList.size} posts fetched",Toast.LENGTH_LONG).show()
+
+            if (Posts.isEmpty()){
+                postsViewModel.getApiPosts()
+            }
+            else{
+                val postsAdapter=PostsAdapters(posts,)
+
+            }
         })
         postsViewModel.postsFailedLiveData.observe(this, Observer { error->
             Toast.makeText(baseContext,error,Toast.LENGTH_LONG).show()

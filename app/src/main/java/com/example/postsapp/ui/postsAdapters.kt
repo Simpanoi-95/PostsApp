@@ -8,14 +8,11 @@ import com.example.postsapp.R
 import com.example.postsapp.models.Post
 import kotlinx.android.synthetic.main.row_item_post.view.*
 
-class postsAdapters (
-
-var posts: List<Post>
-) : RecyclerView.Adapter<postsAdapters.PostsViewHolder>() {
+class postsAdapters (var posts: List<Post>) : RecyclerView.Adapter<postsAdapters.PostsViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostsViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.row_item_post, parent, false)
+        var itemview=LayoutInflater.from(parent.context).inflate(R.layout.row_item_post, parent, false)
     )
 
     override fun getItemCount() = posts.size
@@ -27,9 +24,17 @@ var posts: List<Post>
         holder.itemView.Ids.text  = post.id.toString()
         holder.itemView.title.text = post.title
         holder.itemView.body.text = post.body
+        holder.rowview.setOnClickListener{
+            PostItemClickListener.onItemClick(post)
+        }
+
+    }
+    override fun getItemCount():Int {
+        return postsList.size
+
     }
 
-    inner class PostsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+     class PostsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
 
 
